@@ -6,13 +6,13 @@ pipeline {
         }
     }
     stages {
-        stage('SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonarqube-container') {
-                sh 'mvn sonar:sonar'
-                }
-            }
-        }
+        // stage('SonarQube analysis') {
+        //     steps {
+        //         withSonarQubeEnv('sonarqube-container') {
+        //         sh 'mvn sonar:sonar'
+        //         }
+        //     }
+        // }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
