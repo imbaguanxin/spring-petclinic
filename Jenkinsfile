@@ -6,7 +6,7 @@ pipeline {
         }
     }
     stages {
-        stage("SonarQube analysis") {
+        stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarqube-container') {
                 sh 'mvn sonar:sonar'
@@ -16,6 +16,16 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Publish') {
+            steps {
+                sh 'mvnw package'
+            }
+            post {
+                success {
+                    archiveArtifacts 'target/*.jar'
+                }
             }
         }
     }
