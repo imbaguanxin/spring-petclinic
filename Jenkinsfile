@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn -B -DskipTests -Dmaven.wagon.http.ssl.insecure=true clean package'
             }
         }
         // stage('SonarQube analysis') {
@@ -20,14 +20,9 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Publish') {
+        stage('Run') {
             steps {
-                sh './mvnw package'
-            }
-            post {
-                success {
-                    archiveArtifacts 'target/*.jar'
-                }
+                sh 'java -Dserver.port=8081 -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar'
             }
         }
     }
