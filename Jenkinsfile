@@ -9,19 +9,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests -Dmaven.wagon.http.ssl.insecure=true clean package'
+                sh 'echo "Building..'
+                // sh 'mvn -B -DskipTests clean package'
             }
         }
-        // stage('SonarQube analysis') {
-        //     steps {
-        //         withSonarQubeEnv('sonarqube-container') {
-        //         sh 'mvn sonar:sonar'
-        //         }
-        //     }
-        // }
+        stage('SonarQube analysis') {
+            steps {
+                sh 'echo "SonarQube analysis..'
+                // withSonarQubeEnv('sonarqube-container') {
+                // sh 'mvn sonar:sonar'
+                // }
+            }
+        }
         stage('Run') {
             steps {
-                sh 'java -Dserver.port=8081 -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar'
+                sh 'echo "Running..'
+                // sh 'java -Dserver.port=8081 -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar'
             }
         }
     }
