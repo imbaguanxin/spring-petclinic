@@ -1,8 +1,7 @@
 pipeline {
     agent {
         docker {
-            // image 'maven:3.9.5-eclipse-temurin-17-alpine'
-            image '3.9.5-eclipse-temurin-11-focal'
+            image 'maven:3.9.5-eclipse-temurin-17-alpine'
             args '-v /root/.m2:/root/.m2'
         }
     }
@@ -22,7 +21,7 @@ pipeline {
         // }
         stage('Publish') {
             steps {
-                sh 'mvnw package'
+                sh './mvnw package'
             }
             post {
                 success {
