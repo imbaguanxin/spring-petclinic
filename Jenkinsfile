@@ -10,12 +10,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Building.."'
+                sh 'sleep 30s'
                 // sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('SonarQube analysis') {
             steps {
                 sh 'echo "SonarQube analysis.."'
+                sh 'sleep 70s'
                 // withSonarQubeEnv('sonarqube-container') {
                 // sh 'mvn sonar:sonar'
                 // }
@@ -24,6 +26,7 @@ pipeline {
         stage('Run') {
             steps {
                 sh 'echo "Running.."'
+                sh 'sleep 10s'
                 // sh 'java -Dserver.port=8081 -jar target/spring-petclinic-3.1.0-SNAPSHOT.jar'
             }
         }
