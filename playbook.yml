@@ -1,6 +1,6 @@
 ---
 - name: Deploy PetClinic Artifact
-  hosts: 192.168.1.201
+  hosts: webserver
   remote_user: vagrant
   become: true
 
