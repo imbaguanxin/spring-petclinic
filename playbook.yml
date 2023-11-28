@@ -10,6 +10,15 @@
   #   deploy_directory: "/home/vagrant/"
 
   tasks:
+    - name: Copy random file
+      become: true
+      copy:
+        src: "readme.md"
+        dest: "/home/vagrant/readme.md"
+        owner: vagrant
+        group: vagrant
+        mode: 0644
+
     - name: Copy artifact
       become: true
       copy:
