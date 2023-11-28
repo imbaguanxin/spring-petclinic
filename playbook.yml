@@ -2,6 +2,7 @@
 - name: Deploy PetClinic Artifact
   hosts: 192.168.1.201
   remote_user: vagrant
+  become: true
 
   # vars:
   #   artifact_name: "spring-petclinic-3.1.0-SNAPSHOT.jar"
@@ -10,6 +11,10 @@
 
   tasks:
     - name: Copy artifact
-      ansible.builtin.copy:
+      become: true
+      copy:
         src: "/var/lib/jenkins/workspace/petclinic/target/spring-petclinic-3.1.0-SNAPSHOT.jar"
         dest: "/home/vagrant/spring-petclinic-3.1.0-SNAPSHOT.jar"
+        owner: vagrant
+        group: vagrant
+        mode: 0644
