@@ -16,6 +16,7 @@ pipeline {
                     inventory: 'inventory.ini',
                     becomeUser: 'vagrant',
                     become: true, 
+                    hostKeyChecking: false,
                 )   
                 // sh 'ansible-playbook playbook.yml -i inventory.ini -b --become-user vagrant'         
             }
