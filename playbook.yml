@@ -10,6 +10,6 @@
 
     tasks:
       - name: Copy artifact
-        copy:
+        ansible.builtin.copy:
           src: "{{ artifact_source }}"
           dest: "{{ deploy_directory }}{{ artifact_name }}"
