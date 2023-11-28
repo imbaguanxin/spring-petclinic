@@ -3,13 +3,13 @@
   hosts: 192.168.1.201
   remote_user: vagrant
 
-  vars:
-    artifact_name: "spring-petclinic-3.1.0-SNAPSHOT.jar"
-    artifact_source: "/var/lib/jenkins/workspace/petclinic/target/spring-petclinic-3.1.0-SNAPSHOT.jar"
-    deploy_directory: "/home/vagrant/"
+  # vars:
+  #   artifact_name: "spring-petclinic-3.1.0-SNAPSHOT.jar"
+  #   artifact_source: "/var/lib/jenkins/workspace/petclinic/target/spring-petclinic-3.1.0-SNAPSHOT.jar"
+  #   deploy_directory: "/home/vagrant/"
 
-    tasks:
-      - name: Copy artifact
-        ansible.builtin.copy:
-          src: "{{ artifact_source }}"
-          dest: "{{ deploy_directory }}{{ artifact_name }}"
+  tasks:
+    - name: Copy artifact
+      ansible.builtin.copy:
+        src: "/var/lib/jenkins/workspace/petclinic/target/spring-petclinic-3.1.0-SNAPSHOT.jar"
+        dest: "/home/vagrant/spring-petclinic-3.1.0-SNAPSHOT.jar"
