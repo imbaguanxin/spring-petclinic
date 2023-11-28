@@ -18,7 +18,7 @@ pipeline {
                 //     become: true, 
                 //     hostKeyChecking: false,
                 // )   
-                sh 'ansible-playbook playbook.yml -i inventory.ini -b --become-user vagrant -o StrictHostKeyChecking=no'         
+                sh 'ansible-playbook playbook.yml -i inventory.ini -b --become-user vagrant'         
             }
         }
     }
